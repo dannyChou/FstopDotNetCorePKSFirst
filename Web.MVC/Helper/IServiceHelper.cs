@@ -18,5 +18,10 @@ namespace Web.MVC.Helper
         /// </summary>
         /// <returns></returns>
         Task<string> GetOrder();
+
+        /// <summary>
+        /// 取得服務清單
+        /// </summary>
+        void GetServices();
     }
 }

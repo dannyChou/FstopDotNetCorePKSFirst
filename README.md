@@ -14,8 +14,29 @@ sudo docker run -d -p 9052:80 --name productservice2 productapi:1.2 --ConsulSett
 sudo docker build -t mymvcweb -f ./Product.API/Dockerfile .
 sudo docker run -d -p 9070:80 --name mvcweb mymvcweb --ConsulSetting:ConsulAddress="http://172.20.10.2:8500"
 
---刪除所有的 name = orderservice productservice 的Container
+```
+
+##### --刪除所有的 name = orderservice productservice 的Container
+
+```
 sudo docker rm -f $(sudo docker ps --filter name=orderservice* -q)
 sudo docker rm -f $(sudo docker ps --filter name=productservice* -q)
+```
+
+## Consul
+
+```
+Consul
+Consul官网：https://www.consul.io/
+Consul的主要功能有服务注册与发现、健康检查、K-V存储、多数据中心等。
+
+Consul安装：很简单，直接在官网下载解压即可。
+Consul运行：在consul.exe目录下打开命令行执行 consul.exe agent -dev
+浏览器访问：http://localhost:8500/
+
+https://www.cnblogs.com/xishuai/p/macos-ubuntu-install-consul.html
+啟動Consul的指令
+consul agent -server -bootstrap-expect 1 -data-dir /tmp/consul -ui  -config-dir /etc/consul.d -bind=172.20.10.2
+
 ```
 

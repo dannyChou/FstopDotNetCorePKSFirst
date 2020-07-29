@@ -1,0 +1,14 @@
+/Ocelot.APIGateway/bin/Debug/netcoreapp3.1
+/Ocelot.APIGateway/obj/Debug/netcoreapp3.1
+/.vs/NetCoreMicroserviceDemo/v16/.suo
+/.vs/NetCoreMicroserviceDemo/v16/TestStore/0
+/Ocelot.APIGateway/obj
+/Order.API/bin/Debug/netcoreapp3.1
+/Order.API/obj/Debug/netcoreapp3.1
+/Order.API/obj
+/Product.API/bin/Debug/netcoreapp3.1
+/Product.API/obj/Debug/netcoreapp3.1
+/Product.API/obj
+/Web.MVC/bin/Debug/netcoreapp3.1
+/Web.MVC/obj/Debug/netcoreapp3.1
+/Web.MVC/obj
