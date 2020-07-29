@@ -21,6 +21,12 @@ sudo docker run -d -p 9070:80 --name mvcweb mymvcweb --ConsulSetting:ConsulAddre
 ```
 sudo docker rm -f $(sudo docker ps --filter name=orderservice* -q)
 sudo docker rm -f $(sudo docker ps --filter name=productservice* -q)
+
+sudo docker rm $(sudo docker ps -a --filter name=orderservice* -q)
+sudo docker rm $(sudo docker ps -a --filter name=productservice* -q)
+
+sudo docker start $(sudo docker ps -a --filter name=orderservice* -q)
+sudo docker start $(sudo docker ps -a --filter name=productservice* -q)
 ```
 
 ## Consul
@@ -38,5 +44,11 @@ https://www.cnblogs.com/xishuai/p/macos-ubuntu-install-consul.html
 啟動Consul的指令
 consul agent -server -bootstrap-expect 1 -data-dir /tmp/consul -ui  -config-dir /etc/consul.d -bind=172.20.10.2
 
+```
+
+使用命令執行Dotnet
+
+```
+目前不考虑网关集群，就不放在docker里了。直接控制台执行：`dotnet Ocelot.APIGateway.dll --urls="http://*:9070"
 ```
 
