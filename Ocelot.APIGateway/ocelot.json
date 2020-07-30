@@ -5,21 +5,27 @@
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/products",
       "UpstreamHttpMethod": [ "Get" ],
-      "ServiceName":  "ProductService",
+      "ServiceName": "ProductService",
       "LoadBalancerOptions": {
-        "Type": "RoundRobin" //负载均衡，轮询机制 LeastConnection/RoundRobin/NoLoadBalancer/CookieStickySessions
+        "Type": "RoundRobin"
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 5,
+        "Region": "regionname"
       }
     },
     {
       "DownstreamPathTemplate": "/orders",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/orders",
-      "UpstreamHttpMethod": [
-        "Get"
-      ],
-      "ServiceName":  "OrderService",
+      "UpstreamHttpMethod": [ "Get" ],
+      "ServiceName": "OrderService",
       "LoadBalancerOptions": {
-        "Type": "RoundRobin" //负载均衡，轮询机制 LeastConnection/RoundRobin/NoLoadBalancer/CookieStickySessions
+        "Type": "RoundRobin"
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 5,
+        "Region": "regionname"
       }
     }
   ],
@@ -27,8 +33,8 @@
     "BaseUrl": "http://localhost:9070",
     "ServiceDiscoveryProvider": {
       "Scheme": "http",
-      "Host": "172.20.10.2",
-      "Port": "8500",
+      "Host": "192.168.1.105",
+      "Port": 8500,
       "Type": "Consul"
     }
   }

@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using Microsoft.Extensions.Configuration;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,21 +9,30 @@ namespace Web.MVC.Helper
 {
     public class GatewayServiceHelper : IServiceHelper
     {
+        public GatewayServiceHelper(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
         public async Task<string> GetOrder()
         {
-            var client = new RestClient("http://localhost:9070");
-            var request = new RestRequest("/orders",Method.GET);
+            Uri apiGateway = new Uri(Configuration["ConsulSetting:ConsulAddress"]);
+            var Client = new RestClient(apiGateway);
+            var request = new RestRequest("/orders", Method.GET);
 
-            var response = await client.ExecuteAsync(request);
+            var response = await Client.ExecuteAsync(request);
             return response.Content;
         }
 
         public async Task<string> GetProduct()
         {
-            var client = new RestClient("http://localhost:9070");
+            Uri apiGateway = new Uri(Configuration["ConsulSetting:ConsulAddress"]);
+            var Client = new RestClient(apiGateway);
             var request = new RestRequest("/products", Method.GET);
 
-            var response = await client.ExecuteAsync(request);
+            var response = await Client.ExecuteAsync(request);
             return response.Content;
         }
 
@@ -30,5 +40,6 @@ namespace Web.MVC.Helper
         {
             throw new NotImplementedException();
         }
+
     }
 }

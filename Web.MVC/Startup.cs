@@ -24,7 +24,9 @@ namespace Web.MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            
+
+            //services.AddSingleton<IServiceHelper, ServiceHelper>();
+
             //×¢ÈëIServiceHelper
             services.AddSingleton<IServiceHelper, GatewayServiceHelper>();
         }
